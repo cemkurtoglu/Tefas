@@ -19,7 +19,7 @@ def get_fon_fiyat():
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
         "Accept-Language": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
-        "Accept-Encoding": "gzip, deflate, br",
+        "Accept-Encoding": "gzip, deflate",
         "Connection": "keep-alive",
         "Upgrade-Insecure-Requests": "1",
         "Sec-Fetch-Dest": "document",
@@ -39,7 +39,7 @@ def get_fon_fiyat():
         panel = soup.find(id="MainContent_PanelInfo")
         
         if not panel:
-            return f"Panel bulunamadı. Sayfa Başlığı: {soup.title.string if soup.title else 'Yok'} | HTML Özeti: {response.text[:300]}", 404
+            return f"SAYFA BOŞ MU?: {repr(response.content[:200])}", 404
             
         # "Son Fiyat" metnini içeren etiketi bulup içindeki sayıya odaklanıyoruz
         text = panel.get_text()
