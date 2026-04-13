@@ -3,6 +3,8 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
+import cloudscraper
+
 app = Flask(__name__)
 
 @app.route('/fon')
@@ -28,7 +30,7 @@ def get_fon_fiyat():
     }
     
     try:
-        session = requests.Session()
+        session = cloudscraper.create_scraper()
         response = session.get(url, headers=headers, timeout=15)
         if response.status_code != 200:
             return f"TEFAS Hatası: {response.status_code}", 500
