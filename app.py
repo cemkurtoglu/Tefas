@@ -39,7 +39,7 @@ def get_fon_fiyat():
         panel = soup.find(id="MainContent_PanelInfo")
         
         if not panel:
-            return "Panel bulunamadı", 404
+            return f"Panel bulunamadı. Sayfa Başlığı: {soup.title.string if soup.title else 'Yok'} | HTML Özeti: {response.text[:300]}", 404
             
         # "Son Fiyat" metnini içeren etiketi bulup içindeki sayıya odaklanıyoruz
         text = panel.get_text()
